@@ -1,0 +1,19 @@
+@import 'bootstrap';    
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Bitter|Bree+Serif|Nunito&display=swap");
+
+body,
+html {
+  background-color: #e6e6e6;
+  color: #6b6b6b;
+  font-family: "ABeeZee", sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: "Bitter";
+}
+.bg-nav-bar {
+  background-color: #2f4536;
+}
+.text-sm {
+  font-size: 13px;
+}
