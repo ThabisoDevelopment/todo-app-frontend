@@ -7,7 +7,6 @@ import { notify } from '@kyvg/vue3-notification'
 
 const router = useRouter()
 const route = useRoute()
-const token = route.query.token
 
 onMounted(() => {
     if (!route.query.token) {
@@ -33,11 +32,8 @@ const passwordReset = async() => {
         user.error = ''
         user.loading = true
         const userPassword = { password: user.password }
-        const { data } = await axios.put("/oauth/reset", userPassword, {
-            headers: {
-                'Authorization': token
-            }
-        })
+        axios.defaults.headers.common['Authorization']  = route.query.token
+        const { data } = await axios.put("/oauth/reset", userPassword)
         user.loading = false
         user.password = ''
         notify({
@@ -74,7 +70,7 @@ const passwordReset = async() => {
                                     <span class="input-group-text text-secondary" id="password-addon">
                                         <span class="fas fa-lock"></span>
                                     </span>
-                                    <input type="text" id="password" class="form-control bg-light" v-model="user.password">
+                                    <input type="password" id="password" class="form-control bg-light" v-model="user.password">
                                 </div>
                             </div>
                             <div class="row justify-content-center mb-3">

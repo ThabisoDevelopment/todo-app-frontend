@@ -12,6 +12,24 @@ const router = createRouter({
             component: () => import('./components/Home.vue')
         },
         {
+            path: '/todos/:id',
+            name: 'ShowTodo',
+            meta: { auth: true },
+            component: () => import('./components/todos/Show.vue')
+        },
+        {
+            path: '/todos/create',
+            name: 'CreateTodo',
+            meta: { auth: true },
+            component: () => import('./components/todos/CreateAndEdit.vue')
+        },
+        {
+            path: '/todos/edit/:id',
+            name: 'EditTodo',
+            meta: { auth: true },
+            component: () => import('./components/todos/CreateAndEdit.vue')
+        },
+        {
             path: '/user',
             name: 'User',
             meta: { auth: true },
@@ -41,6 +59,13 @@ const router = createRouter({
             meta: { auth: false },
             component: () => import('./components/auth/ResetPassword.vue')
         },
+        {
+            path: '/oauth/verify/email',
+            name: 'VerifyEmail',
+            meta: { auth: false },
+            component: () => import('./components/auth/VerifyEmail.vue')
+        },
+        
     ]
 })
 
